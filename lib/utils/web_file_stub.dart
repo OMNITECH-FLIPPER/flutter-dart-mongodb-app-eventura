@@ -1,9 +1,8 @@
 /// A stub implementation of the File class for web platforms
 class WebFile {
   final String path;
-  
   WebFile(this.path);
-  
+
   Future<bool> exists() async {
     // For web, we'll just check if it's a web path
     return path.startsWith('web_');
