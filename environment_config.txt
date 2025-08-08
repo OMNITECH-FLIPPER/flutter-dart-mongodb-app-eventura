@@ -1,0 +1,131 @@
+# Eventura Flutter App Environment Configuration Template
+# Copy this file to .env and update the values for your environment
+# Never commit the actual .env file to version control
+
+# =============================================================================
+# MONGODB CONFIGURATION
+# =============================================================================
+
+# MongoDB Connection String
+# Format: mongodb+srv://username:password@cluster.mongodb.net/database?retryWrites=true&w=majority
+MONGO_URL=mongodb+srv://your_username:your_password@your_cluster.mongodb.net/your_database?retryWrites=true&w=majority
+
+# Database Collection Name
+COLLECTION_NAME=users
+
+# =============================================================================
+# APP CONFIGURATION
+# =============================================================================
+
+# Application Name
+APP_NAME=Eventura
+
+# Application Version
+APP_VERSION=1.0.0
+
+# =============================================================================
+# FEATURE FLAGS
+# =============================================================================
+
+# Enable Analytics (true/false)
+ENABLE_ANALYTICS=true
+
+# Enable Notifications (true/false)
+ENABLE_NOTIFICATIONS=true
+
+# =============================================================================
+# API CONFIGURATION
+# =============================================================================
+
+# Connection Timeout (milliseconds)
+CONNECTION_TIMEOUT=30000
+
+# Request Timeout (milliseconds)
+REQUEST_TIMEOUT=10000
+
+# =============================================================================
+# DEVELOPMENT SETTINGS
+# =============================================================================
+
+# Debug Mode (true/false)
+DEBUG_MODE=true
+
+# Log Level (debug, info, warning, error)
+LOG_LEVEL=debug
+
+# =============================================================================
+# SECURITY SETTINGS
+# =============================================================================
+
+# JWT Secret Key (for future authentication)
+JWT_SECRET=your_jwt_secret_key_here
+
+# API Key (for external services)
+API_KEY=your_api_key_here
+
+# =============================================================================
+# EXTERNAL SERVICES (Optional)
+# =============================================================================
+
+# Firebase Configuration (Removed - using MongoDB-based notifications)
+# FIREBASE_PROJECT_ID=your_firebase_project_id
+# FIREBASE_API_KEY=your_firebase_api_key
+
+# Email Service Configuration
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=your_email@gmail.com
+SMTP_PASSWORD=your_app_password
+
+# =============================================================================
+# STORAGE CONFIGURATION
+# =============================================================================
+
+# File Upload Path
+UPLOAD_PATH=uploads/
+
+# Maximum File Size (bytes)
+MAX_FILE_SIZE=10485760
+
+# =============================================================================
+# NOTIFICATION SETTINGS
+# =============================================================================
+
+# Push Notification Server Key
+PUSH_SERVER_KEY=your_push_server_key
+
+# Email Notifications Enabled
+EMAIL_NOTIFICATIONS_ENABLED=true
+
+# SMS Notifications Enabled
+SMS_NOTIFICATIONS_ENABLED=false
+
+# =============================================================================
+# ANALYTICS CONFIGURATION
+# =============================================================================
+
+# Google Analytics Tracking ID
+GA_TRACKING_ID=your_ga_tracking_id
+
+# Mixpanel Token
+MIXPANEL_TOKEN=your_mixpanel_token
+
+# =============================================================================
+# CACHE CONFIGURATION
+# =============================================================================
+
+# Cache Duration (seconds)
+CACHE_DURATION=3600
+
+# Enable Caching
+ENABLE_CACHE=true
+
+# =============================================================================
+# RATE LIMITING
+# =============================================================================
+
+# Rate Limit Requests per Minute
+RATE_LIMIT_REQUESTS=100
+
+# Rate Limit Window (minutes)
+RATE_LIMIT_WINDOW=1 

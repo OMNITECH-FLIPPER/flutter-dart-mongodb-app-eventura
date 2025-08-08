@@ -1,0 +1,41 @@
+// Eventura App MongoDB Playground
+
+// List all users
+db.users.find({});
+
+// List all events
+db.events.find({});
+
+// List all event registrations
+db.event_registrations.find({});
+
+// Insert a test event (edit as needed)
+db.events.insertOne({
+  title: "Sample Event",
+  description: "This is a test event for Eventura.",
+  organizer_id: "22-4957-735",
+  organizer_name: "Kyle Angelo",
+  image_url: "",
+  total_slots: 100,
+  available_slots: 100,
+  event_date: new Date(),
+  location: "Online",
+  status: "upcoming",
+  created_at: new Date(),
+  updated_at: new Date()
+});
+
+// Count users
+db.users.countDocuments({});
+
+// Count events
+db.events.countDocuments({});
+
+// Find all users with role 'Organizer'
+db.users.find({ role: "Organizer" });
+
+// Find all registrations for a specific event (replace EVENT_ID)
+db.event_registrations.find({ event_id: "EVENT_ID" });
+
+// Find all events created by a specific organizer (replace ORGANIZER_ID)
+db.events.find({ organizer_id: "ORGANIZER_ID" }); 

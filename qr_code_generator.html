@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventura QR Code Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #006B3C, #004d2b);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #006B3C;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+        #qrcode {
+            margin: 30px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        .url-info {
+            background: #e8f5e8;
+            border: 2px solid #006B3C;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .url-text {
+            font-family: monospace;
+            font-size: 1.1em;
+            color: #006B3C;
+            word-break: break-all;
+        }
+        .instructions {
+            text-align: left;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .instructions h3 {
+            color: #006B3C;
+            margin-top: 0;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+            color: #555;
+        }
+        .device-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .device-item {
+            background: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #006B3C;
+        }
+        .device-item h4 {
+            color: #006B3C;
+            margin: 0 0 8px 0;
+        }
+        .device-item p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Eventura</h1>
+        <p class="subtitle">Multi-Device Access QR Code</p>
+        
+        <div class="url-info">
+            <strong>Access URL:</strong><br>
+            <span class="url-text" id="accessUrl">http://192.168.100.78:43218</span>
+        </div>
+        
+        <div id="qrcode"></div>
+        
+        <div class="instructions">
+            <h3>📱 How to Access from Any Device:</h3>
+            <ol>
+                <li><strong>Scan the QR code</strong> with your phone's camera or QR scanner app</li>
+                <li><strong>Or type the URL</strong> directly in any web browser</li>
+                <li><strong>Ensure your device</strong> is on the same WiFi network</li>
+                <li><strong>Enjoy Eventura</strong> on any device simultaneously!</li>
+            </ol>
+        </div>
+        
+        <div class="device-list">
+            <div class="device-item">
+                <h4>📱 Android</h4>
+                <p>Use Google Chrome, Samsung Internet, or any browser</p>
+            </div>
+            <div class="device-item">
+                <h4>🍎 iPhone/iPad</h4>
+                <p>Use Safari, Chrome, or any browser</p>
+            </div>
+            <div class="device-item">
+                <h4>💻 Computer</h4>
+                <p>Use Chrome, Firefox, Edge, or Safari</p>
+            </div>
+            <div class="device-item">
+                <h4>📺 Smart TV</h4>
+                <p>Use built-in browser or Chrome</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 10px; border: 1px solid #ffeaa7;">
+            <strong>🔑 Login Credentials:</strong><br>
+            <strong>User ID:</strong> 22-4957-735<br>
+            <strong>Password:</strong> KYLO.omni0
+        </div>
+    </div>
+
+    <script>
+        // Generate QR code for Eventura access
+        const url = 'http://192.168.100.78:43218';
+        
+        QRCode.toCanvas(document.getElementById('qrcode'), url, {
+            width: 200,
+            margin: 2,
+            color: {
+                dark: '#006B3C',
+                light: '#FFFFFF'
+            }
+        }, function (error) {
+            if (error) console.error(error);
+            console.log('QR Code generated successfully!');
+        });
+        
+        // Update URL if IP changes
+        function updateUrl(newIp) {
+            const newUrl = `http://${newIp}:43218`;
+            document.getElementById('accessUrl').textContent = newUrl;
+            
+            // Regenerate QR code
+            QRCode.toCanvas(document.getElementById('qrcode'), newUrl, {
+                width: 200,
+                margin: 2,
+                color: {
+                    dark: '#006B3C',
+                    light: '#FFFFFF'
+                }
+            });
+        }
+        
+        // Auto-detect IP (optional)
+        fetch('/api/network-info')
+            .then(response => response.json())
+            .then(data => {
+                if (data.ip && data.ip !== '192.168.100.78') {
+                    updateUrl(data.ip);
+                }
+            })
+            .catch(error => {
+                console.log('Using default IP: 192.168.100.78');
+            });
+    </script>
+</body>
+</html> 
