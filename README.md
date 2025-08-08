@@ -10,7 +10,7 @@ Eventura is a comprehensive event management application built with Flutter and 
 ### 🔐 Authentication & Security
 - **Secure Password Hashing**: All passwords are hashed using bcrypt
 - **Role-based Access Control**: Admin, Organizer, and User roles
-- **JWT Token Authentication**: Secure session management
+- **account Authentication**: Secure session management
 - **Account Blocking/Unblocking**: Admin can manage user accounts
 
 ### 📱 User Management
@@ -56,7 +56,6 @@ Eventura is a comprehensive event management application built with Flutter and 
 - Node.js (v16 or higher)
 - Flutter SDK (v3.8 or higher)
 - MongoDB Atlas account
-- Firebase project (optional, for push notifications)
 
 ### 1. Clone and Setup
 ```bash
@@ -88,15 +87,6 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
-
-# Firebase Configuration (optional)
-FIREBASE_PROJECT_ID=your-project-id
-FIREBASE_PRIVATE_KEY=your-private-key
-FIREBASE_CLIENT_EMAIL=your-client-email
-```
-
-### 3. Firebase Setup (Optional)
-For push notifications, update `firebase-service-account.json` with your Firebase credentials.
 
 ### 4. Start the Application
 ```bash
